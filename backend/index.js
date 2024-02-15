@@ -2,7 +2,7 @@ const express=require('express')
 const { default: mongoose } = require('mongoose')
 const app=express()
 // const mongoose=require('mongoose')
-const bodyParser = require('body-parser')
+    const bodyParser = require('body-parser')
 const dotenv=require('dotenv')
 const cors=require('cors')
 // const multer=require('multer')
@@ -26,7 +26,7 @@ const connectDB  =async()=>{
 await mongoose.connect(process.env.MONGO_URL)
 console.log('database is connected successfully')
     }catch(err){
-        console.log(err)
+        console.log(err, 'connectDB error')
     }
 }
 

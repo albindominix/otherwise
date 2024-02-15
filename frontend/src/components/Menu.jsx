@@ -13,27 +13,20 @@ import { useDispatch, useSelector } from "react-redux";
 const Menu = () => {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
-  // const { user } = useSelector((state) => state.authUser); //for getting the data we use useSelector
   const user = JSON.parse(localStorage.getItem("user"));
   const [logout, { isLoading }] = useLogoutMutation();
-  // const dispatch = useDispatch();
 
   const handleLogout = async () => {
     try {
       const res = await logout();
-      console.log(res);
       localStorage.removeItem("user");
-      // dispatch(userUpdated(null));
-      console.log(user);
       navigate("/login");
       location.reload(true);
     } catch (err) {
       setError(true);
-      console.log(err);
     }
   };
 
-  console.log("🚀 ~ file: Menu.jsx:37 ~ Menu ~ userl:", user)
 
   return (
     <div className="bg-black w-[200px] z-10 flex flex-col items-start absolute top-12 right-6 md:right-32 rounded-md p-4 space-y-4">

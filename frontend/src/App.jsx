@@ -13,39 +13,18 @@ import CreatePost from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
 import Profile from "./pages/Profile";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetUserQuery, 
-  // userUpdated 
-} from "./redux/slice/authSlice";
+import { useGetUserQuery } from "./redux/slice/authSlice";
 import MyBlogs from "./pages/MyBlogs";
 
 function App() {
-
-  const { data ,isLoading,isError} = useGetUserQuery();
-
-  console.log("🚀 ~ file: App.jsx:22 ~ App ~ isLoading:", isLoading?'afhnauagag':'nothing')
-
-  // const { user } = useSelector((state) => state.authUser); //for getting the data we use useSelector
+  const { data, isLoading, isError } = useGetUserQuery();
 
   const dispatch = useDispatch();
 
-const navigate = useNavigate()
-  if(data){
-    localStorage.setItem('user',JSON.stringify(data))
-
+  const navigate = useNavigate();
+  if (data) {
+    localStorage.setItem("user", JSON.stringify(data), 60 * 60 * 1000);
   }
-  // useEffect(() => {
-  //   if (data && data !== null) {
-  //     dispatch(userUpdated(data)) 
-  //   }
-  // }, [data]);
-
-  // useEffect(() => {
-  //     // dispatch(userUpdated(data))
-  //     if(!isError){
-  //       navigate('/login')
-  //     }
-  // }, []);
-console.log(isError)
 
   return (
     <>

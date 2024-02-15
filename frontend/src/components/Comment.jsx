@@ -4,10 +4,8 @@ import { useSelector } from 'react-redux';
 import { useDeleteCommentMutation } from '../redux/slice/postsSlice';
 
 function Comment({comment,refetchComm}) {
-  // const { user } = useSelector((state) => state.authUser);
   const user = JSON.parse(localStorage.getItem("user"));
 
-// console.log(user?._id,'user?._id',comment?.userId,'comment?.userId')
 const [deleteComment] =useDeleteCommentMutation()
   return (
     <div className="px-2 py-2 bg-gray-200 rounded-lg my-2">

@@ -10,21 +10,17 @@ const Login = () => {
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
   const [error,setError]=useState(false)
-  // const {setUser}=useContext(UserContext)
   const navigate=useNavigate()
   const URL = import.meta.env.VITE_BACKEND_URL
   const [login, { isLoading }] = useLoginMutation();
   const handleLogin=async()=>{
     try{
       const res = await login({email,password}).unwrap();
-      console.log(res)
-      // setUser(res.data)
       navigate("/")
 
     }
     catch(err){
       setError(true)
-      console.log(err)
 
     }
 

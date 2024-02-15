@@ -16,6 +16,7 @@ export const postsApi = createApi({
         body:post
       })
     }),
+ 
     deletePost: builder.mutation({
       query: (postId) => ({
         url: `/posts/${postId}`, 
@@ -54,6 +55,7 @@ export const {
   useDeletePostMutation,
   useGetPostCommentsQuery,
   useGetSinglePostQuery,
+  useEditPostMutation,
   useGetPostsQuery,
   useDeleteCommentMutation,
 useCreatePostMutation ,

@@ -8,19 +8,17 @@ function CreatePost() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
-  // const {user}=useContext(UserContext)
   const [cat, setCat] = useState("");
   const [cats, setCats] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
 
-  // const { user } = useSelector((state) => state.authUser);
   const [createPost, { data }] = useCreatePostMutation();
   const navigate = useNavigate();
   function deleteCategory(i) {
-    console.log(i);
+    
     let updatedCats = [...cats];
     updatedCats.splice(i, 1);
-    console.log(updatedCats);
+    
     setCats(updatedCats);
   }
 
@@ -29,7 +27,7 @@ function CreatePost() {
     updatedCats.push(cat);
     setCat("");
     setCats(updatedCats);
-    console.log(cats);
+    
   }
   function handleNewPost(e) {
     e.preventDefault();
@@ -45,9 +43,9 @@ function CreatePost() {
         .then((res) => navigate("/posts/post/" + res._id))
         .catch((rejected) => console.error(rejected));
     } catch (err) {
-      console.log(err);
+      
     }
-    //  console.log(data)
+    //  
   }
   return (
     <div>

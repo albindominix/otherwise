@@ -12,7 +12,7 @@ const verifyToken = require('../verifyToken')
 const createPostController= async (req,res)=>{
     try{
         const newPost=new Post(req.body)
-        console.log('create',newPost)
+       
 
         const savedPost=await newPost.save()
         
@@ -28,7 +28,7 @@ const createPostController= async (req,res)=>{
 //UPDATE
 const updatePostController = async (req,res)=>{
     try{
-       
+        console.log("🚀 ~ file: posts.js:32 ~ updatePostController ~ req.params.id:", req.params.id)
         const updatedPost=await Post.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
         res.status(200).json(updatedPost)
 

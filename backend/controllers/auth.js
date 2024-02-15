@@ -13,12 +13,12 @@ try{
     const savedUser = await newUser.save()
     res.status(200).json(savedUser)
 }catch(err){
-    console.log(err)
+    
 }
 }
 const loginController = async(req,res)=>{
    try{
-    const {email,username} =req.body;
+    const {email,username} =req.body; 
 
     const user=await User.findOne({email})
        
@@ -32,13 +32,14 @@ const loginController = async(req,res)=>{
 
     const token=jwt.sign({_id:user._id,username:user.username,email:user.email},process.env.SECRET,{expiresIn:"3d"})
 const {password,...userData} = user._doc
-console.log(userData)
+
     res.cookie('token',token).status(200).json(userData)
    }catch(err){
-    console.log(err)``
+    
    }
     
 }
+
 const logoutController= async(req,res)=>{
 try{
         res.clearCookie("token",{sameSite:"none",secure:true}).status(200).send("User logged out successfully!")
@@ -50,7 +51,7 @@ try{
 }
 
 const refetchController = async(req,res)=>{
-    console.log(req)
+    
     const token=req.cookies.token
     jwt.verify(token,process.env.SECRET,{},async (err,data)=>{
         if(err){

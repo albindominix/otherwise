@@ -22,7 +22,6 @@ function Home() {
   // const { user } = useSelector((state) => state.authUser); 
   const user = JSON.parse(localStorage.getItem("user"));
 
-console.log(loading,"home")
   const [noResults, setNoResults] = useState(false);
   const dispatch = useDispatch();
 
@@ -61,7 +60,6 @@ console.log(loading,"home")
   }
 
 
-console.log(data)
   return (
     <div>
       <Navbar />

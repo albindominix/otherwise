@@ -11,7 +11,6 @@ const verifyToken = require('../verifyToken')
 const createCommentController= async (req,res)=>{
     try{
         const newComment=new Comment(req.body)
-        console.log(req.body)
         const savedComment=await newComment.save()
         
         res.status(200).json(savedComment)

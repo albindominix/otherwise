@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
+import Loader from '../components/Loader'
 import Footer from "../components/Footer";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
@@ -11,7 +12,7 @@ import {
   useGetPostsQuery,
   useGetSinglePostQuery,
 } from "../redux/slice/postsSlice";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 function PostDetails() {
   const [commen, setCommen] = useState([]);
@@ -19,20 +20,17 @@ function PostDetails() {
   const [post1, setPost1] = useState({});
   const user = JSON.parse(localStorage.getItem("user"));
 
-  // const { user } = useSelector((state) => state.authUser);
-
+const navigate = useNavigate()
   const [loader, setLoader] = useState(false);
   const postId = useParams().id;
-  // console.log(postId);
-  // console.log(user);
+  console.log(postId);
   const { data: post } = useGetSinglePostQuery(postId);
-  // console.log(post);
   const [deletePost, { isLoading: isDeleting }] = useDeletePostMutation();
 
   const { data: comments,refetch } = useGetPostCommentsQuery(postId);
   const [addComment] = useAddCommentMutation();
 
-
+console.log()
   return (
     <div>
       <Navbar />

@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Footer from '../components/Footer'
-import axios from 'axios'
 import { useRegisterMutation } from '../redux/slice/authSlice'
 function Register() {
     
@@ -14,42 +13,20 @@ function Register() {
 
   const [register, { isLoading }] = useRegisterMutation();
 
-  console.log(username,email,password)
-  const URL = import.meta.env.VITE_BACKEND_URL
 
-  console.log(isLoading)
   const handleRegister = async (user) => {
     try {
       const res = await register({username,email,password}).unwrap();
-      console.log(res)
-      // setUsername(res.username)
-      // setEmail(res.email)
-      // setPassword(res.password)
+      
       setError(false)
       navigate("/login")
       
     } catch (error) {
       setError(true)
-      console.log(error)
     }
   };
 
-  // const handleRegister=async ()=>{
-  //   try{
-  //     const res=await axios.post(URL+"/auth/register",{username,email,password})
-  //     setUsername(res.data.username)
-  //     setEmail(res.data.email)
-  //     setPassword(res.data.password)
-  //     setError(false)
-  //     navigate("/login")
-      
-  //   }
-  //   catch(err){
-  //     setError(true)
-  //     console.log(err)
-  //   }
 
-  // }
 
   
 
